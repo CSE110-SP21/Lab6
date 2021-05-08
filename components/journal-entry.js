@@ -74,13 +74,10 @@ class JournalEntry extends HTMLElement {
     
     // CODE GOES HERE
 
-    // Get the children elements of the shadow root
-    let nodes = this.shadowRoot.childNodes;
-
     // Set the title, date, and content of the elements
-    nodes[3].childNodes[1].textContent = entry.title;
-    nodes[3].childNodes[3].textContent = entry.date;
-    nodes[3].childNodes[5].textContent = entry.content;
+    this.shadowRoot.querySelector('.entry').querySelector('.entry-title').textContent = entry.title;
+    this.shadowRoot.querySelector('.entry').querySelector('.entry-date').textContent = entry.date;
+    this.shadowRoot.querySelector('.entry').querySelector('.entry-content').textContent = entry.content;
 
 
     if (entry.image) {
@@ -98,7 +95,7 @@ class JournalEntry extends HTMLElement {
       entryImage.setAttribute('class', 'entry-image');
       entryImage.src = entry.image.src;
       entryImage.alt = entry.image.alt;
-      nodes[3].appendChild(entryImage);
+      this.shadowRoot.querySelector('.entry').appendChild(entryImage);
       
 
 
@@ -129,7 +126,7 @@ class JournalEntry extends HTMLElement {
       entryAudio.setAttribute('class', 'entry-audio');
       entryAudio.src = entry.audio;
       entryAudio.controls = true;
-      nodes[3].appendChild(entryAudio);
+      this.shadowRoot.querySelector('.entry').appendChild(entryAudio);
 
 
 

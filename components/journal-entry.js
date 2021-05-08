@@ -74,6 +74,15 @@ class JournalEntry extends HTMLElement {
     
     // CODE GOES HERE
 
+    // Get the children elements of the shadow root
+    let nodes = this.shadowRoot.childNodes;
+
+    // Set the title, date, and content of the elements
+    nodes[3].childNodes[1].textContent = entry.title;
+    nodes[3].childNodes[3].textContent = entry.date;
+    nodes[3].childNodes[5].textContent = entry.content;
+
+
     if (entry.image) {
       let entryImage;
       /*
@@ -85,7 +94,12 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
-
+      entryImage = document.createElement('img');
+      entryImage.setAttribute('class', 'entry-image');
+      entryImage.src = entry.image.src;
+      entryImage.alt = entry.image.alt;
+      nodes[3].appendChild(entryImage);
+      
 
 
 
@@ -111,7 +125,11 @@ class JournalEntry extends HTMLElement {
 
       // CODE GOES HERE vvv
 
-
+      entryAudio = document.createElement('audio');
+      entryAudio.setAttribute('class', 'entry-audio');
+      entryAudio.src = entry.audio;
+      entryAudio.controls = true;
+      nodes[3].appendChild(entryAudio);
 
 
 
